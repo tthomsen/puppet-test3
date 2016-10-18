@@ -76,13 +76,14 @@ RSpec.configure do |c|
         puts "run r10k"
         cmd = 'PUPPETFILE=/etc/puppet/Puppetfile PUPPETFILE_DIR=/etc/puppet/modules r10k puppetfile install --verbose debug2 --color 2>&1'
         on master, cmd
+        puts "run r10k done"
 
         puts "create /etc/puppet/modules/test"
         on master, "mkdir -p /etc/puppet/modules/test"
 
         puts "proj_root"
         puts proj_root
-        
+
         Dir.foreach(proj_root) do |item|
           puts "copy module files"
           next if item == '.' or item == '..' or item == '.git' or item == '.gitignore' or item == 'spec'
