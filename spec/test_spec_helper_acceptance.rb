@@ -63,7 +63,9 @@ RSpec.configure do |c|
       if host['roles'].include?('master')
         puts "copy hiera.yaml"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
+        puts "copy radioevent.json"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'radioevent.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
+        puts "copy Puppetfile"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'Puppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
 
         on master, "gem install r10k"
