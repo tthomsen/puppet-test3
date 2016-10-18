@@ -64,11 +64,11 @@ RSpec.configure do |c|
         #puts "copy hiera.yaml"
         #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
 
-        #puts "copy radioevent.json"
+        puts "copy radioevent.json"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'radioevent.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
 
-        #puts "copy Puppetfile"
-        #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'Puppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
+        puts "copy Puppetfile"
+        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'Puppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
 
         puts "install r10k"
         on master, "gem install r10k"
