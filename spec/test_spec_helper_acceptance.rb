@@ -52,6 +52,7 @@ RSpec.configure do |c|
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'test')
     hosts.each do |host|
+      puts "RSpec configure before hosts each"
       if host['roles'].include?('master')
         puts "copy hiera.yaml"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
