@@ -53,6 +53,7 @@ RSpec.configure do |c|
     puppet_module_install(:source => proj_root, :module_name => 'test')
     hosts.each do |host|
       if host['roles'].include?('master')
+        puts "copy hiera.yaml"
         scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
         #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'zookeeper.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
         #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'ZookeeperPuppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
@@ -64,6 +65,7 @@ RSpec.configure do |c|
 
         on master, "mkdir -p /etc/puppet/modules/test"
         Dir.foreach(proj_root) do |item|
+          puts "copy module files"
           next if item == '.' or item == '..' or item == '.git' or item == '.gitignore' or item == 'spec'
 
           puts item
