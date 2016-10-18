@@ -1,0 +1,17 @@
+HOSTS:
+  test.beacker.vm:
+    roles:
+      - master
+      - agent
+      - default
+    vmname: centos-6-x86-64
+    platform: centos-6-x86-64
+    amisize: m3.medium
+    hypervisor: ec2
+    snapshot: foss
+
+CONFIG:
+  log_level: verbose
+  nfs_server: none
+  consoleport: 443
+  type: foss
