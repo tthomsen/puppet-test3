@@ -1,0 +1,7 @@
+---
+:backends:
+  - json
+:hierarchy:
+  - default
+:json:
+  :datadir: "/etc/puppet/hiera"
