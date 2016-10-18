@@ -27,7 +27,7 @@ group :development do
 end
 
 group :system_tests do
-  gem "beaker"
-  gem "beaker-rspec"
-  gem "beaker-puppet_install_helper"
+  gem "beaker", '2.32.1'
+  gem "beaker-rspec", '5.3.0'
+  gem "beaker-puppet_install_helper", '0.4.0'
 end
