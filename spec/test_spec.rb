@@ -1,4 +1,4 @@
-require 'spec_helper_acceptance'
+require 'test_spec_helper_acceptance'
 
 describe 'test class' do
   context 'default parameters' do
