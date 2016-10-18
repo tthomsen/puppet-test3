@@ -5,9 +5,16 @@ require 'beaker/puppet_install_helper'
 run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
 master_fqdn = "test.beacker.vm"
 master = only_host_with_role(hosts, 'master')
+puts "output of master"
+puts master
+
+puts "hosts"
+puts hosts
 
 hosts.each do |host|
+  puts "hosts each"
   if host['roles'].include?('master')
+    puts "hosts each master"
     on master, "yum -y install puppet-server"
     on master, "echo '*' > /etc/puppet/autosign.conf"
     on master, "mkdir -p /etc/puppet/hiera"
