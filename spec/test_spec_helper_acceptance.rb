@@ -52,7 +52,26 @@ RSpec.configure do |c|
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'test')
     hosts.each do |host|
-      on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
+      if host['roles'].include?('master')
+        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
+        #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'zookeeper.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
+        #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'ZookeeperPuppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
+
+        on master, "gem install r10k"
+
+        cmd = 'PUPPETFILE=/etc/puppet/Puppetfile PUPPETFILE_DIR=/etc/puppet/modules r10k puppetfile install --verbose debug2 --color 2>&1'
+        on master, cmd
+
+        on master, "mkdir -p /etc/puppet/modules/test"
+        Dir.foreach(proj_root) do |item|
+          next if item == '.' or item == '..' or item == '.git' or item == '.gitignore' or item == 'spec'
+
+          puts item
+          scp_to master, File.join(proj_root, item), '/etc/puppet/modules/test'
+        end
+
+        on master, "service puppetmaster restart"
+      end
     end
   end
 end
