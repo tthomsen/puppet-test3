@@ -58,6 +58,9 @@ RSpec.configure do |c|
     puts "RSpec configure before"
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'test')
+
+    puts "RSpec configure before hosts"
+    puts hosts
     hosts.each do |host|
       puts "RSpec configure before hosts each"
       if host['roles'].include?('master')
