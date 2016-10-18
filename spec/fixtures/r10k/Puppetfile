@@ -1,0 +1,68 @@
+# pin at 3.2.0 to match puppet.git for now
+mod 'stdlib',
+  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
+  :ref => '4.7.0'
+
+mod 'concat',
+  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
+  :ref => '2.0.0'
+
+mod 'git',
+  :git => "https://github.com/puppetlabs/puppetlabs-git.git",
+  :ref => "0.2.0"
+
+mod 'firewall',
+  :git => "https://github.com/puppetlabs/puppetlabs-firewall.git",
+  :ref => "0.4.2"
+
+mod 'vcsrepo',
+  :git => "git@github.com:puppetlabs/puppetlabs-vcsrepo.git",
+  :ref => "1.3.0"
+
+mod 'ntp',
+  :git => "https://github.com/puppetlabs/puppetlabs-ntp",
+  :ref => "3.2.0"
+
+mod 'limits',
+  :git => "git@github.com:erwbgy/puppet-limits.git",
+  :ref => "v0.3.0"
+
+mod 'nodejs',
+  :git => "git@github.com:puppet-community/puppet-nodejs.git",
+  :ref => "1.1.0"
+
+mod 'gpg_key',
+  :git => "git@github.com:treydock/puppet-gpg_key.git",
+  :ref => "0.0.3"
+
+mod 'logstash',
+  :git => "https://github.com/elastic/puppet-logstash.git",
+  :ref => "0.5.1"
+
+mod 'file_concat',
+  :git => "https://github.com/electrical/puppet-lib-file_concat.git",
+  :ref => "1.0.1"
+
+###################
+# private modules #
+###################
+
+mod 'yum',
+  :git => "git@github.com:coxmediagroup/puppet-yum.git",
+  :ref => 'master'
+
+mod 'roles',
+  :git => "git@github.com:coxmediagroup/puppet-roles.git",
+  :ref => 'master'
+
+mod 'profiles',
+  :git => "git@github.com:coxmediagroup/puppet-profiles.git",
+  :ref => 'B-20573'
+
+mod 'cmg_logging',
+  :git => "git@github.com:coxmediagroup/puppet-cmg_logging.git",
+  :ref => "master"
+
+mod 'nodejs_app',
+  :git => 'git@github.com:coxmediagroup/puppet-nodejs_app.git',
+  :ref => 'B-20573'

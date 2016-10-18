@@ -1,0 +1,7 @@
+{
+  "nodejs_app::deploy_dir": "/var/node/radio-eventapp-web",
+  "nodejs_app::git_repo": "https://2f54de92ac80d8afad93e05384234e352da63775:x-oauth-basic@github.com/coxmediagroup/radio-eventapp-web.git",
+  "nodejs_app::git_revision": "master",
+  "nodejs_app::service_run_command": "/var/node/radio-eventapp-web/build/server/server",
+  "nodejs_app::service_name": "radioevent"
+}

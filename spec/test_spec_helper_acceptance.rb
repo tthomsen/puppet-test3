@@ -62,9 +62,9 @@ RSpec.configure do |c|
       puts "RSpec configure before hosts each"
       if host['roles'].include?('master')
         puts "copy hiera.yaml"
-        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
-        #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'zookeeper.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
-        #scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'ZookeeperPuppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
+        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'hiera.yaml'), File.join('/etc', 'puppet', 'hiera.yaml')
+        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'hiera', 'radioevent.json'), File.join('/etc', 'puppet', 'hiera', 'default.json')
+        scp_to master, File.join(proj_root, 'spec', 'fixtures', 'r10k', 'Puppetfile'), File.join('/etc', 'puppet', 'Puppetfile')
 
         on master, "gem install r10k"
 
@@ -72,6 +72,7 @@ RSpec.configure do |c|
         on master, cmd
 
         on master, "mkdir -p /etc/puppet/modules/test"
+        puts proj_root
         Dir.foreach(proj_root) do |item|
           puts "copy module files"
           next if item == '.' or item == '..' or item == '.git' or item == '.gitignore' or item == 'spec'
